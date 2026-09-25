@@ -73,7 +73,3 @@ If you run into a problem with a specific Blender version, open an issue and inc
 If something isn't working or you have an idea that would make the addon more useful, feel free to open an issue.
 
 Pull requests are also welcome.
-
-## License
-
-You are free to use and modify the content of this repository for personal, commercial, or educational purposes. However, **you are not allowed to distribute or sell this project or any modified version for commercial purposes without explicit written permission** from Unlim8ted Studio Productions.
