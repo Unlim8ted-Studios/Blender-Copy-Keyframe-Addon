@@ -76,4 +76,4 @@ Pull requests are also welcome.
 
 ## License
 
-See the repository license for usage and redistribution terms.
+You are free to use and modify the content of this repository for personal, commercial, or educational purposes. However, **you are not allowed to distribute or sell this project or any modified version for commercial purposes without explicit written permission** from Unlim8ted Studio Productions.
