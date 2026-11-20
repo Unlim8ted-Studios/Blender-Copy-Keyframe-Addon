@@ -1,0 +1,70 @@
+name: Blender extension
+on:
+  pull_request:
+  push:
+    branches: [main, master]
+  release:
+    types: [published]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    if: vars.BLENDER_EXTENSIONS_LICENSE_APPROVED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download Blender 4.2.0
+        run: |
+          curl --fail --location --retry 3 https://download.blender.org/release/Blender4.2/blender-4.2.0-linux-x64.tar.xz -o "$RUNNER_TEMP/blender.tar.xz"
+          tar -xf "$RUNNER_TEMP/blender.tar.xz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/blender-4.2.0-linux-x64" >> "$GITHUB_PATH"
+      - name: Validate and build
+        run: |
+          blender --factory-startup --command extension validate
+          mkdir -p dist
+          blender --factory-startup --command extension build --output-dir dist
+          blender --factory-startup --command extension validate dist/*.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: blender-extension
+          path: dist/*.zip
+          if-no-files-found: error
+  upload:
+    if: github.event_name == 'release' && !github.event.release.prerelease && vars.BLENDER_EXTENSIONS_SYNC_ENABLED == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    environment: blender-extensions
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: blender-extension
+          path: dist
+      - name: Check license and release version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          python - <<'PY'
+          import os, pathlib, tomllib
+          manifest = tomllib.loads(pathlib.Path('blender_manifest.toml').read_text())
+          assert os.environ['RELEASE_TAG'] == 'v' + manifest['version'], 'Release tag must match manifest version'
+          assert 'GNU GENERAL PUBLIC LICENSE' in pathlib.Path('LICENCE.md').read_text(), 'GPL licensing must be approved and applied first'
+          PY
+      - name: Upload version to Blender Extensions
+        env:
+          BLENDER_EXTENSIONS_TOKEN: ${{ secrets.BLENDER_EXTENSIONS_TOKEN }}
+          EXTENSION_ID: ${{ vars.BLENDER_EXTENSION_ID }}
+          RELEASE_NOTES: ${{ github.event.release.body }}
+        run: |
+          test -n "$BLENDER_EXTENSIONS_TOKEN"
+          test -n "$EXTENSION_ID"
+          [[ "$EXTENSION_ID" =~ ^[a-z0-9_-]+$ ]]
+          shopt -s nullglob
+          packages=(dist/*.zip)
+          test "${#packages[@]}" -eq 1
+          curl --fail-with-body --retry 0 -X POST \
+            "https://extensions.blender.org/api/v1/extensions/$EXTENSION_ID/versions/upload/" \
+            -H "Authorization:bearer $BLENDER_EXTENSIONS_TOKEN" \
+            -F "version_file=@${packages[0]}" \
+            --form-string "release_notes=$RELEASE_NOTES"

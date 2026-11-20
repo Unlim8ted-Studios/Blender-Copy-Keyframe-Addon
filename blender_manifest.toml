@@ -1,0 +1,15 @@
+schema_version = "1.0.0"
+id = "copy_keyframe_to_selected"
+version = "1.0.0"
+name = "Copy Keyframe to Selected Objects"
+tagline = "Copy animation values at the current frame to selected objects"
+maintainer = "Unlim8ted Studios <support@unlim8ted.com>"
+type = "add-on"
+website = "https://github.com/Unlim8ted-Studios/Blender-Copy-Keyframe-Addon"
+tags = ["Animation"]
+blender_version_min = "4.2.0"
+blender_version_max = "5.0.0"
+license = ["SPDX:GPL-3.0-or-later"]
+
+[build]
+paths_exclude_pattern = ["__pycache__/", "*.pyc", ".git/", ".github/", ".gitignore", ".gitattributes", "EXTENSIONS_SETUP.md", "EXTENSIONS_LISTING.md", "dist/"]
