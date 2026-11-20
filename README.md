@@ -73,3 +73,7 @@ If you run into a problem with a specific Blender version, open an issue and inc
 If something isn't working or you have an idea that would make the addon more useful, feel free to open an issue.
 
 Pull requests are also welcome.
+
+[Source code on GitHub](https://github.com/Unlim8ted-Studios/Blender-Copy-Keyframe-Addon) | [Report a bug](https://github.com/Unlim8ted-Studios/Blender-Copy-Keyframe-Addon/issues)
+
+Licensed under [GPL-3.0-or-later](LICENCE.md).

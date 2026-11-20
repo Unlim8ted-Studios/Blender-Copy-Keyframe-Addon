@@ -12,4 +12,4 @@ blender_version_max = "5.0.0"
 license = ["SPDX:GPL-3.0-or-later"]
 
 [build]
-paths_exclude_pattern = ["__pycache__/", "*.pyc", ".git/", ".github/", ".gitignore", ".gitattributes", "EXTENSIONS_SETUP.md", "EXTENSIONS_LISTING.md", "dist/"]
+paths_exclude_pattern = ["__pycache__/", "*.pyc", ".git/", ".github/", ".gitignore", ".gitattributes", "dist/"]
