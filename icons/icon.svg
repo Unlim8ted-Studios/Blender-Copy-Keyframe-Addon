@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-labelledby="title desc">
+  <title id="title">Copy Keyframe to Selected Objects — Blender Extension</title>
+  <desc id="desc">Minimal vector mark showing an animated keyframe on a source object branching to three target objects.</desc>
+  <defs>
+    </defs>
+  <!-- Large source tile, active keyframe in amber. -->
+  <rect x="507" y="350" width="280" height="280" rx="48" fill="#233C53" stroke="#67B0E6" stroke-width="6"/>
+  <path d="M577 437 L646 398 L715 437 L646 476 Z" fill="#438EC6"/>
+  <path d="M577 437 L646 476 L646 560 L577 521 Z" fill="#2C6690"/>
+  <path d="M715 437 L646 476 L646 560 L715 521 Z" fill="#3677A8"/>
+  <path d="M646 317 L683 354 L646 391 L609 354 Z" fill="#F8C34B" stroke="#18232C" stroke-width="8"/>
+  <circle cx="646" cy="491" r="11" fill="#D8ECF9"/>
+
+  <!-- Single property value moving from source to targets. -->
+  <g stroke="#F8C34B" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M786 490 H918 Q944 490 944 464 V331 Q944 305 970 305 H1122"/>
+    <path d="M944 490 H1122"/>
+    <path d="M944 490 V649 Q944 675 970 675 H1122"/>
+  </g>
+  <g fill="#F8C34B">
+    <path d="M1151 305 L1115 281 V329 Z"/>
+    <path d="M1151 490 L1115 466 V514 Z"/>
+    <path d="M1151 675 L1115 651 V699 Z"/>
+  </g>
+
+  <!-- Three target tiles, designed for repeatability at smaller sizes. -->
+  <g fill="#3B3056" stroke="#A58BD9" stroke-width="5">
+    <rect x="1165" y="243" width="184" height="124" rx="25"/>
+    <rect x="1165" y="428" width="184" height="124" rx="25"/>
+    <rect x="1165" y="613" width="184" height="124" rx="25"/>
+  </g>
+  <g fill="#F8C34B">
+    <path d="M1257 264 L1292 299 L1257 334 L1222 299 Z"/>
+    <path d="M1257 449 L1292 484 L1257 519 L1222 484 Z"/>
+    <path d="M1257 634 L1292 669 L1257 704 L1222 669 Z"/>
+  </g>
+  <g stroke="#C8B7E9" stroke-width="6" opacity="0.77" stroke-linecap="round">
+    <path d="M1201 347 H1314"/>
+    <path d="M1201 532 H1314"/>
+    <path d="M1201 717 H1314"/>
+  </g>
+
+  <!-- Typographic lockup. -->
+  <g font-family="Inter, Arial, sans-serif" text-anchor="middle">
+    <text x="960" y="846" fill="#F7FAFC" font-weight="750" font-size="78" letter-spacing="-2.4">Copy Keyframe to Selected Objects</text>
+    <text x="960" y="915" fill="#AAB5C0" font-weight="400" font-size="30">Copy a keyframed property value from the active object to selected objects</text>
+  </g>
+  <rect x="838" y="968" width="244" height="4" rx="2" fill="#F8C34B" opacity="0.88"/>
+</svg>
