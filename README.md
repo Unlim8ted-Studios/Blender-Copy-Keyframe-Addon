@@ -1,5 +1,8 @@
 # Blender Copy Keyframe Addon
+![addon icon](./icons/icon.svg)
 
+![Add-on Download Count](https://img.shields.io/github/downloads/Unlim8ted-Studios/Blender-Copy-Keyframe-Addon/total?label=Add-on%20Downloads)
+---
 A small Blender addon that makes it easier to copy keyframes to multiple objects without having to repeat the same process for each one.
 
 The addon adds a simple tool to Blender's **N-Panel**, so you can copy animation data across multiple selected objects directly from the 3D Viewport.
